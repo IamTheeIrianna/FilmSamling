@@ -5,6 +5,31 @@ public class Movie {
     private boolean isInColor;
     private int lengthInMinutes;
     private String genre;
-}
+
+
+    public Movie(String title, String director, int yearCreated, String isInColor, String lengthInMinutes, String genre) {
+        this.title = title;
+        this.director = director;
+        this.yearCreated = yearCreated;
+        this.isInColor = isInColor;
+        this.lengthInMinutes = lengthInMinutes;
+        this.genre = genre;
+    }
+
+    public int getYearCreated() {
+        return yearCreated;
+    }
+
+    public String getDirector() {
+        return director;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public String getIsInColor() {
+        return isInColor;
+    }
 
 
