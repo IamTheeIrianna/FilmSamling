@@ -28,8 +28,9 @@ public class Movie {
         return genre;
     }
 
-    public String getIsInColor() {
+    public boolean getIsInColor() {
         return isInColor;
     }
+}
 
 
