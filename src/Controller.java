@@ -12,7 +12,22 @@ public Controller(){
 }
 
 
-public void startProgramme() {
+public void startProgram() {
+    boolean running = true;
+    while (running) {
+        displayMenu();
+        int choice = scanner.nextInt();
+        switch (choice) {
+            case 1:
+                addMovie();
+                break;
+            case 2:
+                running = false;
+                break;
+            default:
+                System.out.println("Invalid choice");
+        }
+    }
     Scanner scanner = new Scanner(System.in);
     String command;
     System.out.println("Welcome to your movie collection");
