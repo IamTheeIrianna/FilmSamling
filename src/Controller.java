@@ -3,12 +3,16 @@ import java.util.Scanner;
 public class Controller {
 private Movie movie;
 private MovieCollection movieCollection;
+private Scanner scanner;
 
 public Controller(){
-    movie.displayMenu();
+    movieCollection = new MovieCollection();
+    scanner = new Scanner(System.in);
+
 }
 
-public void displayMenu() {
+
+public void startProgramme() {
     Scanner scanner = new Scanner(System.in);
     String command;
     System.out.println("Welcome to your movie collection");
