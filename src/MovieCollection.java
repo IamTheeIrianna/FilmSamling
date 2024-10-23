@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class MovieCollection {
     String Controller;
@@ -18,7 +17,7 @@ public class MovieCollection {
     }
 
 
-    public void addMovie(String title, String director, boolean isInColor, int length, int year, String genre) {
+    public void addMovie() {
 
     }
 }

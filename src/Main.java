@@ -24,7 +24,7 @@ public class Main {
         System.out.println("Genre: ");
         String genre = scanner.nextLine();
 
-        movieCollection.addMovie(title, director, isInColor, length, year, genre);
+        movieCollection.addMovie();
 
         System.out.println("Your movie has been added to the retrospective collection. ");
 

@@ -31,6 +31,7 @@ public class Movie {
     public boolean getIsInColor() {
         return isInColor;
     }
+
 }
 
 
