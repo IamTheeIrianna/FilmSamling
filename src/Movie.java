@@ -36,9 +36,6 @@ public class Movie {
         return title;
     }
 
-    public boolean isInColor() {
-        return isInColor;
-    }
 
     public int getLengthInMinutes() {
         return lengthInMinutes;
