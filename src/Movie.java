@@ -1,9 +1,9 @@
 public class Movie {
     private String title;
     private String director;
-    private String yearCreated;
-    private String isInColor;
-    private String lengthInMinutes;
+    private int yearCreated;
+    private boolean isInColor;
+    private int lengthInMinutes;
     private String genre;
 }
 

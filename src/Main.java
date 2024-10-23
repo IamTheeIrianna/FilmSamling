@@ -27,5 +27,7 @@ public class Main {
         movieCollection.addMovie(title, director, isInColor, length, year, genre);
 
         System.out.println("Your movie has been added to the retrospective collection. ");
+
+        scanner.close();
     }
 }
