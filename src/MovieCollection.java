@@ -17,5 +17,8 @@ public class MovieCollection {
         return Controller;
     }
 
-    
+
+    public void addMovie(String title, String director, boolean isInColor, int length, int year, String genre) {
+
+    }
 }
