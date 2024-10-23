@@ -1,21 +1,30 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class MovieCollection {
-    String Controller;
-    private ArrayList<Movie> movies;
+    public class MovieCollection {
+        private ArrayList<Movie> movies;
 
-    public void movies() {
-        this.movies = new ArrayList<>();
+        public MovieCollection () {
+            movies = new ArrayList<>();
+        }
+
+        public void addMovie(String title, String director, int yearCreated, boolean isInColor, int lenghtInMinutes, String genre) {
+            Movie newMovie = new Movie(title, director, yearCreated, isInColor, lenghtInMinutes, genre);
+            movies.add(newMovie);
+        }
+
+        public void displayMovies() {
+            if(movies.isEmpty()) {
+                System.out.println("No movies was found.");
+            } else {
+                for (movie movie : movies) {
+                    System.out.println(movie);
+                }
+            }
+        }
     }
 
-    public ArrayList<Movie> getMovie() {
-        return movies;
-    }
 
-    public String addMovie (Movie movie) {
-        return Controller;
-    }
 
-    
-}
+
+
