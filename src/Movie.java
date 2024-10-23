@@ -32,6 +32,17 @@ public class Movie {
         return isInColor;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public boolean isInColor() {
+        return isInColor;
+    }
+
+    public int getLengthInMinutes() {
+        return lengthInMinutes;
+    }
 }
 
 
