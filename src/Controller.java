@@ -15,11 +15,11 @@ public Controller(){
 public void startProgram() {
     boolean running = true;
     while (running) {
-        displayMenu();
+        displayMenu(); // public void metode?
         int choice = scanner.nextInt();
         switch (choice) {
             case 1:
-                addMovie();
+                addMovie(); // skriv MovieCollection. først
                 break;
             case 2:
                 running = false;

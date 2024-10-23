@@ -17,7 +17,7 @@ import java.util.Scanner;
             if(movies.isEmpty()) {
                 System.out.println("No movies was found.");
             } else {
-                for (movie movie : movies) {
+                for (movie movie : movies) { //første movie skal referere til ArrayList Movie (stort M) ?
                     System.out.println(movie);
                 }
             }
