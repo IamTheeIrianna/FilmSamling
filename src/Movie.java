@@ -7,7 +7,7 @@ public class Movie {
     private String genre;
 
 
-    public Movie(String title, String director, int yearCreated, String isInColor, String lengthInMinutes, String genre) {
+    public Movie(String title, String director, int yearCreated, boolean isInColor, int lengthInMinutes, String genre) {
         this.title = title;
         this.director = director;
         this.yearCreated = yearCreated;
