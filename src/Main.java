@@ -5,13 +5,27 @@ public class Main {
    MovieCollection movieCollection = new MovieCollection();
    Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Enter the title of your movie");
+        System.out.println("Title: ");
         String title = scanner.nextLine();
 
-        System.out.println("Enter the director of the movie");
+        System.out.println("Director: ");
         String director = scanner.nextLine();
 
-        System.out.println("Enter the year the movie was made");
-        String year = scanner.nextLine();
+        System.out.println("Is the movie in colour or B&W?");
+        boolean isInColor = scanner.nextBoolean();
+
+        System.out.println("Movie length in minutes: ");
+        int length = scanner.nextInt();
+
+        System.out.println("Creation year: ");
+        int year = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.println("Genre: ");
+        String genre = scanner.nextLine();
+
+        movieCollection.addMovie(title, director, isInColor, length, year, genre);
+
+        System.out.println("Your movie has been added to the retrospective collection. ");
     }
 }
