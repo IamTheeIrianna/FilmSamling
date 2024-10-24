@@ -15,30 +15,55 @@ public class Movie {
         this.lengthInMinutes = lengthInMinutes;
         this.genre = genre;
     }
-
+//--------------------------
     public int getYearCreated() {
         return yearCreated;
     }
-
+    public void setYearCreated(int yearCreated){
+        this.yearCreated = yearCreated;
+    }
+//--------------------------------------
     public String getDirector() {
         return director;
     }
-
+    public void setDirector(String director){
+        this.director = director;
+    }
+//-----------------------------------------
     public String getGenre() {
         return genre;
     }
-
+    public void setGenre(String genre){
+        this.genre = genre;
+    }
+//------------------------------------------
     public boolean getIsInColor() {
         return isInColor;
     }
-
+    public void setInColor(boolean isInColor){
+        this.isInColor = isInColor;
+    }
+//----------------------------------------------
     public String getTitle() {
         return title;
     }
-
-
+    public void setTitle(String title){
+        this.title = title;
+    }
+//-----------------------------------
     public int getLengthInMinutes() {
         return lengthInMinutes;
+    }
+    public void setLengthInMinutes(int lengthInMinutes) {
+        this.lengthInMinutes = lengthInMinutes;
+    }
+
+
+    //To print movie info
+    @Override
+    public String toString() {
+
+        return "Title:" + title + "\nDirector: " + director + "\nYear: " + yearCreated + "\nMovie in colour: " + isInColor + "\nMovie length: " + lengthInMinutes + " minutes" + "\nGenre: " + genre;
     }
 }
 
