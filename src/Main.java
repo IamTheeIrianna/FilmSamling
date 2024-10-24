@@ -19,7 +19,6 @@ public class Main {
 
         System.out.println("Creation year: ");
         int year = scanner.nextInt();
-        scanner.nextLine();
 
         System.out.println("Genre: ");
         String genre = scanner.nextLine();
@@ -31,3 +30,4 @@ public class Main {
         scanner.close();
     }
 }
+
