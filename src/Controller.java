@@ -15,7 +15,7 @@ public Controller(){
 public void startProgram() {
     boolean running = true;
     while (running) {
-        displayMenu(); // public void metode?
+
         int choice = scanner.nextInt();
         switch (choice) {
             case 1:
