@@ -110,6 +110,10 @@ public class MovieCollection {
         }
         System.out.println("Movie details updated: " + movieToEdit);
     }
+
+    public ArrayList<Movie> getMovieCollectionList() {
+        return movies;
+    }
 }
 
 

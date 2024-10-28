@@ -65,6 +65,7 @@ public class Movie {
 
         return "Title:" + title + "\nDirector: " + director + "\nYear: " + yearCreated + "\nMovie in colour: " + isInColor + "\nMovie length: " + lengthInMinutes + " minutes" + "\nGenre: " + genre;
     }
+
 }
 
 
