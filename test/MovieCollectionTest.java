@@ -11,7 +11,7 @@ class MovieCollectionTest {
 
 
         //Arrange
-        MovieCollection movieCollection = new MovieCollection();
+        MovieCollection movieCollection = new MovieCollection(movieCollection.getMovieCollectionList());
 
         //Act
         movieCollection.addMovie("Batman", "Chris Nolan", 2007, true, 120, "action");
