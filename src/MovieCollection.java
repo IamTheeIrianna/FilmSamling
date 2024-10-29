@@ -57,7 +57,7 @@ public class MovieCollection {
 
         }
 
-        //User select movie ti edit
+        //User select movie to edit
         System.out.println("Enter the number of the movie you want to edit:");
         int movieIndex = scanner.nextInt() - 1; // Adjust for zero-based index
         scanner.nextLine();

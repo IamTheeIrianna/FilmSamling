@@ -34,7 +34,7 @@ public class UI {
             } else { // if user choose any other option than exit
 
                 switch (choice) {
-                    case "add":
+                    case "add","1":
                         System.out.println("Enter movie title:");
                         String title = scanner.nextLine().trim();
 
@@ -62,11 +62,11 @@ public class UI {
 
                         break;
 
-                    case "movies":
+                    case "movies","2":
                         movieCollection.displayMovies();
                         break;
 
-                    case "search":
+                    case "search","3":
                         System.out.print("Search movie by title: ");
                             String searchTitle = scanner.nextLine();
                             ArrayList<Movie> matchingMovies = movieCollection.searchMovie(searchTitle);
@@ -82,7 +82,7 @@ public class UI {
                         }
                         break;
 
-                    case "edit":
+                    case "edit","4":
                         System.out.println("Enter the title of the movie you'd like to edit:");
                         String movieTitle = scanner.nextLine().trim();
                         movieCollection.editMovie(movieTitle);
