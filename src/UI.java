@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+// *** flyt edit til UI
 public class UI {
     public void displayMenu() {
         System.out.println("\n--- Movie Collection Menu ---");
@@ -29,6 +30,7 @@ public class UI {
             if (choice.equals("exit")) {
                 System.out.println("You chose to exit Movie Collection Programme");
                 running = false; //exit loop if user choose exit
+                // System.exit(0); - prøv denne funktion som rent faktisk lukker programmet
             } else { // if user choose any other option than exit
 
                 switch (choice) {

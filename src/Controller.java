@@ -1,4 +1,6 @@
 import java.util.Scanner;
+// *** Controlleren bliver ikke brugt
+// *** UI skal kalde på Controller, Controller skal have adgang til Movie og MovieCollection
 
 public class Controller {
 

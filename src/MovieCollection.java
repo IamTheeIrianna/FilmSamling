@@ -1,6 +1,10 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+// *** brug settere i stedet for scanner !
+
+// *** al input og print skal være i UserInterface (evt. return strings i stedet for sout i MovieCollevtion)
+
 public class MovieCollection {
     private ArrayList<Movie> movies;
     private Scanner scanner;
