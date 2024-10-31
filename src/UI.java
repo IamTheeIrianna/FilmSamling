@@ -20,7 +20,6 @@ public class UI {
     }
 
 
-
     // *** START METHOD ** //
     public void startProgram() {
         Scanner scanner = new Scanner(System.in);
@@ -50,6 +49,7 @@ public class UI {
                         System.out.println("Enter year created:");
                         int year = scanner.nextInt();
                         scanner.nextLine();  // Consume newline
+                        // lav try block for year - misMatchException
 
                         System.out.println("Is the movie in colour? (y/n)");
                         String colorInput = scanner.nextLine().trim().toLowerCase();
@@ -58,6 +58,7 @@ public class UI {
                         System.out.println("Enter movie length in minutes:");
                         int length = scanner.nextInt();
                         scanner.nextLine();  // Consume newline
+                        // lav try block for length in minutes  misMatchException
 
                         System.out.println("Enter genre:");
                         String genre = scanner.nextLine().trim();
@@ -109,6 +110,7 @@ public class UI {
     }
 
     public void editMovie(String title) {
+        // !! Search funktion virker ikke i edit !!
         ArrayList<Movie> matchingMovies = controller.getMovieCollection().searchMovie(title);
         if (matchingMovies.isEmpty()) {
             System.out.println("No movies found under title" + title);
