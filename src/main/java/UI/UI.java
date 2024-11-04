@@ -1,6 +1,5 @@
 package UI;
 
-import datasource.Filehandler;
 import model.Controller;
 import model.Movie;
 
