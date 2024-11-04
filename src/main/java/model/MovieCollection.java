@@ -91,7 +91,25 @@ public class MovieCollection {
             System.out.println("model.Movie not found.");
             return;
         }
+        //----------------------------------------------------------
+        /*System.out.println("Would you like to delete or edit this movie? (delete/edit)");
+            String action = scanner.nextLine().trim();
+            if (action.equalsIgnoreCase("delete")) {
+        deleteMovie(title);
+    } else if (action.equalsIgnoreCase("edit")) {
+       public void deleteMovie(String title) {
+    Movie movieToDelete = getMovieByTitle(title);
 
+    if (movieToDelete == null) {
+        System.out.println("Movie not found.");
+        return;
+    }
+
+    movies.remove(movieToDelete);
+    System.out.println("Movie deleted successfully.");
+}
+        */
+//------------------------------------------------------
         System.out.print("Enter new title (press Enter to keep current): ");
         String newTitle = scanner.nextLine().trim();
         if (!newTitle.isEmpty()) movieToEdit.setTitle(newTitle);
@@ -180,5 +198,7 @@ public class MovieCollection {
         System.out.println("Film gemt til tekst fil.");
 
     }
+
+
 
 }
