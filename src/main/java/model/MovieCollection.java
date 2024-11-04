@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class MovieCollection {
@@ -28,37 +27,10 @@ public class MovieCollection {
         }
     }
 
-    public void addMovie() {
-        try {
-            System.out.println("Enter movie title:");
-            String title = scanner.nextLine().trim();
-
-            System.out.println("Enter director:");
-            String director = scanner.nextLine().trim();
-
-            System.out.println("Enter year created:");
-            int year = scanner.nextInt();
-            scanner.nextLine();  // Consume newline
-
-            System.out.println("Is the movie in color? (y/n)");
-            boolean isInColor = scanner.nextLine().trim().equalsIgnoreCase("y");
-
-            System.out.println("Enter movie length in minutes:");
-            int length = scanner.nextInt();
-            scanner.nextLine();  // Consume newline
-
-            System.out.println("Enter genre:");
-            String genre = scanner.nextLine().trim();
-
-            Movie newMovie = new Movie(title, director, year, isInColor, length, genre);
+    public void addMovie(Movie newMovie) {
             movies.add(newMovie);
-            System.out.println("model.Movie added successfully!");
-
-        } catch (InputMismatchException e) {
-            System.out.println("Invalid input! Please enter a valid number.");
-            scanner.nextLine(); // Clear invalid input
-        }
     }
+
     // Search for movies by title
     public void searchMovie() {
         System.out.print("Enter movie title to search: ");
@@ -83,6 +55,7 @@ public class MovieCollection {
 
     // Edit a movie's details by title
     public void editMovie() {
+        displayMovies(); // lav evt. en metode som kun viser film titler som kan ændres
         System.out.print("Enter the title of the movie to edit: ");
         String title = scanner.nextLine().trim();
         Movie movieToEdit = getMovieByTitle(title);
@@ -186,8 +159,7 @@ public class MovieCollection {
     }
 
     public void saveMovie() throws FileNotFoundException {
-        // TODO: Implement save of the names list to a file
-        //System.out.println("NOT IMPLEMENTED");
+
         File nameFile = new File("FilmSamling.txt");
         PrintStream output = new PrintStream(nameFile);
 
@@ -195,7 +167,6 @@ public class MovieCollection {
             output.println(m.getTitle() + "," + m.getDirector() + "," + m.getYearCreated() + "," + m.getIsInColor() + "," + m.getLengthInMinutes() + "," + m.getGenre());
         }
         output.close();
-        System.out.println("Film gemt til tekst fil.");
 
     }
 
