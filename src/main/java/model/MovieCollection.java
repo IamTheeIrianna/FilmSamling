@@ -16,19 +16,19 @@ public class MovieCollection {
     }
 
     // Display all movies in the collection
-    public void displayMovies() {
-        if (movies.isEmpty()) {
-            System.out.println("No movies in collection.");
-        } else {
-            System.out.println("\n--- Your model.Movie Collection ---");
-            for (Movie movie : movies) {
-                System.out.println(movie);
-            }
-        }
-    }
+   public String displayMovies() {
+       if (movies.isEmpty()) {
+           return "No movies available.";
+       }
+       StringBuilder movieList = new StringBuilder();
+       for (Movie movie : movies) {
+           movieList.append(movie.toString()).append("\n\n");
+       }
+       return movieList.toString();
+   }
 
     public void addMovie(Movie newMovie) {
-            movies.add(newMovie);
+        movies.add(newMovie);
     }
 
     // Search for movies by title
@@ -132,7 +132,7 @@ public class MovieCollection {
         String newGenre = scanner.nextLine().trim();
         if (!newGenre.isEmpty()) movieToEdit.setGenre(newGenre);
 
-        System.out.println("model.Movie details updated: " + movieToEdit);
+        System.out.println("Movie details updated: " + movieToEdit);
     }
 
     // Helper method to find a movie by title
@@ -144,6 +144,7 @@ public class MovieCollection {
         }
         return null;
     }
+
     // throws FileNotFoundException to indicate that the file was not found
     public void loadMovies() throws FileNotFoundException {
 
