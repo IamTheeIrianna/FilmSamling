@@ -53,6 +53,19 @@ public class MovieCollection {
         }
     }
 
+    public ArrayList<Movie> searchMovie(String title) {
+        ArrayList<Movie> matchingMovies = new ArrayList<>();
+
+        for (Movie movie : movies) {
+            if (movie.getTitle().equalsIgnoreCase(title)) {
+                matchingMovies.add(movie);
+            }
+        }
+
+        return matchingMovies;
+    }
+
+
     // Edit a movie's details by title
     public void editMovie() {
         displayMovies(); // lav evt. en metode som kun viser film titler som kan ændres
