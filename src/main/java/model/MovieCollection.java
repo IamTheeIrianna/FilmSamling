@@ -31,29 +31,20 @@ public class MovieCollection {
         movies.add(newMovie);
     }
 
-    // Search for movies by title
-    public void searchMovie() {
-        System.out.print("Enter movie title to search: ");
-        String title = scanner.nextLine().trim();
-        ArrayList<Movie> matchingMovies = new ArrayList<>();
-
-        for (Movie movie : movies) {
-            if (movie.getTitle().equalsIgnoreCase(title)) {
-                matchingMovies.add(movie);
-            }
-        }
-
-        if (matchingMovies.isEmpty()) {
-            System.out.println("No movies found with that title.");
-        } else {
-            System.out.println("Movies found:");
-            for (Movie movie : matchingMovies) {
-                System.out.println(movie);
-            }
+    //Search for movies by title
+//Search for movies by title
+public ArrayList<Movie> searchMovie(String title) {
+    ArrayList<Movie> matchingMovies = new ArrayList<>();
+    for (Movie movie : movies) {
+        if (movie.getTitle().equalsIgnoreCase(title)) {
+            matchingMovies.add(movie);
         }
     }
+    return matchingMovies;
+}
+ /*
     //--------------------------- SearchMovies----------------
-    public static ArrayList<Movie> searchMovie(String title) {
+    public void searchMovie(String title) {
         ArrayList<Movie> matchingMovies = new ArrayList<>();
         try {
             for (Movie movie : movies) {
@@ -65,9 +56,7 @@ public class MovieCollection {
             e.getMessage();
         }
 
-
-        return matchingMovies;
-    }
+    }*/
 
 
     // Edit a movie's details by title

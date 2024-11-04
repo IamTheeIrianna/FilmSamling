@@ -3,7 +3,7 @@ package UI;
 import datasource.Filehandler;
 import model.Controller;
 import model.Movie;
-import model.MovieCollection;
+
 
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -13,12 +13,12 @@ import java.util.ArrayList;
 public class UI {
     private Controller controller;
     private Scanner scanner;
-    private MovieCollection movieCollection;
+
 
     public UI() {
         this.controller = new Controller();
         this.scanner = new Scanner(System.in);
-        this.movieCollection = movieCollection;
+
     }
 
     public void displayMenu() {
@@ -65,12 +65,19 @@ public class UI {
 
                     controller.getMovieCollection().addMovie(newMovie);
                     System.out.println("Movie added successfully!");
+
                 }
-//--------------------------- SearchMovies----------------
-                public void searchMovie() {
+
+                case "movies", "2" -> {
+                    System.out.println("Movies in collection: ");
+                    String moviesDisplay = controller.getMovieCollection().displayMovies();
+                    System.out.println(moviesDisplay);
+                }
+                case "search", "3" -> {
+
                     System.out.print("Enter movie title to search: ");
                     String title = scanner.nextLine().trim();
-                    ArrayList<Movie> matchingMovies = MovieCollection.searchMovie(title);
+                    ArrayList<Movie> matchingMovies = controller.getMovieCollection().searchMovie(title);
 
                     if (matchingMovies.isEmpty()) {
                         System.out.println("No movies found with that title.");
@@ -82,13 +89,6 @@ public class UI {
                     }
                 }
 
-
-                case "movies", "2" -> {
-                    System.out.println("Movies in collection: ");
-                    String moviesDisplay = controller.getMovieCollection().displayMovies();
-                    System.out.println(moviesDisplay);
-                }
-                case "search", "3" -> controller.getMovieCollection().searchMovie();
                 case "edit", "4" -> controller.getMovieCollection().editMovie();
                 case "load", "5" -> {
                     try {
