@@ -52,15 +52,19 @@ public class MovieCollection {
             }
         }
     }
-
-    public ArrayList<Movie> searchMovie(String title) {
+    //--------------------------- SearchMovies----------------
+    public static ArrayList<Movie> searchMovie(String title) {
         ArrayList<Movie> matchingMovies = new ArrayList<>();
-
-        for (Movie movie : movies) {
-            if (movie.getTitle().equalsIgnoreCase(title)) {
-                matchingMovies.add(movie);
+        try {
+            for (Movie movie : movies) {
+                if (movie.getTitle().equalsIgnoreCase(title)) {
+                    matchingMovies.add(movie);
+                }
             }
+        }catch (Exception e) {
+            e.getMessage();
         }
+
 
         return matchingMovies;
     }
