@@ -36,7 +36,7 @@ public class UI {
             String choice = scanner.nextLine().trim().toLowerCase();
 
             switch (choice) {
-                case "add", "1" -> Filehandler.addMovie();
+                case "add", "1" -> controller.getMovieCollection().addMovie();
                 case "movies", "2" -> controller.getMovieCollection().displayMovies();
                 case "search", "3" -> controller.getMovieCollection().searchMovie();
                 case "edit", "4" -> controller.getMovieCollection().editMovie();
