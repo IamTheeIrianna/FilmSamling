@@ -18,7 +18,7 @@ public class MovieCollection {
     // Display all movies in the collection
    public String displayMovies() {
        if (movies.isEmpty()) {
-           return "No movies available.";
+           return "No movies on the list.";
        }
        StringBuilder movieList = new StringBuilder();
        for (Movie movie : movies) {
