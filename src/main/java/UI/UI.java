@@ -2,6 +2,7 @@ package UI;
 
 import datasource.Filehandler;
 import model.Controller;
+import model.Movie;
 
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -10,7 +11,7 @@ import java.util.Scanner;
 public class UI {
     private Controller controller;
     private Scanner scanner;
-   
+
 
     public UI() {
         this.controller = new Controller();
@@ -36,11 +37,38 @@ public class UI {
             String choice = scanner.nextLine().trim().toLowerCase();
 
             switch (choice) {
-                case "add", "1" -> controller.getMovieCollection().addMovie();
+                case "add", "1" -> {
+                    System.out.println("Enter movie title:");
+                    String title = scanner.nextLine().trim();
+
+                    System.out.println("Enter director:");
+                    String director = scanner.nextLine().trim();
+
+                    System.out.println("Enter year created:");
+                    int year = scanner.nextInt();
+                    scanner.nextLine();  // Consume newline
+
+                    System.out.println("Is the movie in color? (y/n)");
+                    boolean isInColor = scanner.nextLine().trim().equalsIgnoreCase("y");
+
+                    System.out.println("Enter movie length in minutes:");
+                    int length = scanner.nextInt();
+                    scanner.nextLine();  // Consume newline
+
+                    System.out.println("Enter genre:");
+                    String genre = scanner.nextLine().trim();
+
+                    Movie newMovie = new Movie(title, director, year, isInColor, length, genre);
+
+                    controller.getMovieCollection().addMovie(newMovie);
+                    System.out.println("model.Movie added successfully!");
+                }
+
+
                 case "movies", "2" -> controller.getMovieCollection().displayMovies();
                 case "search", "3" -> controller.getMovieCollection().searchMovie();
                 case "edit", "4" -> controller.getMovieCollection().editMovie();
-                case "load", "5"-> {
+                case "load", "5" -> {
                     try {
                         controller.getMovieCollection().loadMovies();
                     } catch (FileNotFoundException e) {
@@ -53,6 +81,7 @@ public class UI {
                     } catch (FileNotFoundException e) {
                         throw new RuntimeException(e);
                     }
+                    System.out.println("Film gemt til tekst fil.");
                 }
                 case "exit", "7" -> {
                     System.out.println("Exiting program. Goodbye!");
