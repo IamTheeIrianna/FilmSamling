@@ -3,9 +3,11 @@ package UI;
 import model.Controller;
 import model.Movie;
 
+
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class UI {
     private Controller controller;
@@ -14,6 +16,7 @@ public class UI {
     public UI() {
         this.controller = new Controller();
         this.scanner = new Scanner(System.in);
+
     }
 
     public void displayMenu() {
@@ -76,6 +79,10 @@ public class UI {
         controller.getMovieCollection().addMovie(newMovie);
         System.out.println("Movie added successfully!");
     }
+                    Movie newMovie = new Movie(title, director, year, isInColor, length, genre);
+
+                    controller.getMovieCollection().addMovie(newMovie);
+                    System.out.println("Movie added successfully!");
 
     private void showMovies() {
         String moviesDisplay = controller.getMovieCollection().displayMovies();
@@ -161,6 +168,52 @@ public class UI {
             System.out.println("Movies saved to file successfully.");
         } catch (FileNotFoundException e) {
             System.out.println("Error: Unable to save movies.");
+                }
+
+                case "movies", "2" -> {
+                    System.out.println("Movies in collection: ");
+                    String moviesDisplay = controller.getMovieCollection().displayMovies();
+                    System.out.println(moviesDisplay);
+                }
+                case "search", "3" -> {
+
+                    System.out.print("Enter movie title to search: ");
+                    String title = scanner.nextLine().trim();
+                    ArrayList<Movie> matchingMovies = controller.getMovieCollection().searchMovie(title);
+
+                    if (matchingMovies.isEmpty()) {
+                        System.out.println("No movies found with that title.");
+                    } else {
+                        System.out.println("Movies found:");
+                        for (Movie movie : matchingMovies) {
+                            System.out.println(movie);
+                        }
+                    }
+                }
+
+                case "edit", "4" -> controller.getMovieCollection().editMovie();
+                case "load", "5" -> {
+                    try {
+                        controller.getMovieCollection().loadMovies();
+                    } catch (FileNotFoundException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+                case "save", "6" -> {
+                    try {
+                        controller.getMovieCollection().saveMovie();
+                    } catch (FileNotFoundException e) {
+                        throw new RuntimeException(e);
+                    }
+                    System.out.println("Film gemt til tekst fil.");
+                }
+                case "exit", "7" -> {
+                    System.out.println("Exiting program. Goodbye!");
+                    running = false;
+                }
+                default -> System.out.println("Invalid choice, please try again.");
+            }
+            if (running) displayMenu();
         }
     }
 }

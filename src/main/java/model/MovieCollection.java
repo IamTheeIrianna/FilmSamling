@@ -4,12 +4,15 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class MovieCollection {
     private ArrayList<Movie> movies;
+    private Scanner scanner;
 
     public MovieCollection(ArrayList<Movie> movieCollectionList) {
         this.movies = movieCollectionList;
+        this.scanner = new Scanner(System.in);
     }
 
     // Display all movies in the collection
@@ -28,18 +31,34 @@ public class MovieCollection {
         movies.add(newMovie);
     }
 
+    //Search for movies by title
+//Search for movies by title
+public ArrayList<Movie> searchMovie(String title) {
+    ArrayList<Movie> matchingMovies = new ArrayList<>();
+    for (Movie movie : movies) {
+        if (movie.getTitle().equalsIgnoreCase(title)) {
+            matchingMovies.add(movie);
+        }
+    }
+    return matchingMovies;
+}
+ /*
+    //--------------------------- SearchMovies----------------
+    public void searchMovie(String title) {
     // Search for movies by title
     public ArrayList<Movie> searchMovie(String title) {
         ArrayList<Movie> matchingMovies = new ArrayList<>();
-
-        for (Movie movie : movies) {
-            if (movie.getTitle().equalsIgnoreCase(title)) {
-                matchingMovies.add(movie);
+        try {
+            for (Movie movie : movies) {
+                if (movie.getTitle().equalsIgnoreCase(title)) {
+                    matchingMovies.add(movie);
+                }
             }
+        }catch (Exception e) {
+            e.getMessage();
         }
 
-        return matchingMovies;
-    }
+    }*/
 
     // Edit a movie's details by title
     public void editMovie(Movie movie, String newTitle, String newDirector, Integer newYear, Boolean newInColor, Integer newLength, String newGenre) {
