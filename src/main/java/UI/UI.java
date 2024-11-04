@@ -19,7 +19,7 @@ public class UI {
     }
 
     public void displayMenu() {
-        System.out.println("\n--- model.Movie Collection Menu ---");
+        System.out.println("\n--- Movie Collection Menu ---");
         System.out.println("1. Type 'add' to add a movie to your collection");
         System.out.println("2. Type 'movies' to show your movie collection");
         System.out.println("3. Type 'search' to search for a specific movie");
@@ -61,11 +61,15 @@ public class UI {
                     Movie newMovie = new Movie(title, director, year, isInColor, length, genre);
 
                     controller.getMovieCollection().addMovie(newMovie);
-                    System.out.println("model.Movie added successfully!");
+                    System.out.println("Movie added successfully!");
                 }
 
 
-                case "movies", "2" -> controller.getMovieCollection().displayMovies();
+                case "movies", "2" -> {
+                    System.out.println("Movies in collection: ");
+                    String moviesDisplay = controller.getMovieCollection().displayMovies();
+                    System.out.println(moviesDisplay);
+                }
                 case "search", "3" -> controller.getMovieCollection().searchMovie();
                 case "edit", "4" -> controller.getMovieCollection().editMovie();
                 case "load", "5" -> {
