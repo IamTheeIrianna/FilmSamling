@@ -1,12 +1,11 @@
+package model;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
-// *** Refactor to filehandler *** //
-
 
 public class MovieCollection {
     private ArrayList<Movie> movies;
@@ -17,7 +16,18 @@ public class MovieCollection {
         this.scanner = new Scanner(System.in);
     }
 
-    // Add a new movie to the collection
+    // Display all movies in the collection
+    public void displayMovies() {
+        if (movies.isEmpty()) {
+            System.out.println("No movies in collection.");
+        } else {
+            System.out.println("\n--- Your model.Movie Collection ---");
+            for (Movie movie : movies) {
+                System.out.println(movie);
+            }
+        }
+    }
+
     public void addMovie() {
         try {
             System.out.println("Enter movie title:");
@@ -42,26 +52,13 @@ public class MovieCollection {
 
             Movie newMovie = new Movie(title, director, year, isInColor, length, genre);
             movies.add(newMovie);
-            System.out.println("Movie added successfully!");
+            System.out.println("model.Movie added successfully!");
 
         } catch (InputMismatchException e) {
             System.out.println("Invalid input! Please enter a valid number.");
             scanner.nextLine(); // Clear invalid input
         }
     }
-
-    // Display all movies in the collection
-    public void displayMovies() {
-        if (movies.isEmpty()) {
-            System.out.println("No movies in collection.");
-        } else {
-            System.out.println("\n--- Your Movie Collection ---");
-            for (Movie movie : movies) {
-                System.out.println(movie);
-            }
-        }
-    }
-
     // Search for movies by title
     public void searchMovie() {
         System.out.print("Enter movie title to search: ");
@@ -91,7 +88,7 @@ public class MovieCollection {
         Movie movieToEdit = getMovieByTitle(title);
 
         if (movieToEdit == null) {
-            System.out.println("Movie not found.");
+            System.out.println("model.Movie not found.");
             return;
         }
 
@@ -131,7 +128,7 @@ public class MovieCollection {
         String newGenre = scanner.nextLine().trim();
         if (!newGenre.isEmpty()) movieToEdit.setGenre(newGenre);
 
-        System.out.println("Movie details updated: " + movieToEdit);
+        System.out.println("model.Movie details updated: " + movieToEdit);
     }
 
     // Helper method to find a movie by title

@@ -1,6 +1,7 @@
+package model;
+
 import java.util.ArrayList;
 public class Controller {
-    public UI MovieCollection;
 
     private MovieCollection movieCollection;
     private Movie movie;

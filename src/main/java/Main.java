@@ -1,4 +1,4 @@
-import java.util.Scanner;
+import UI.UI;
 
 public class Main {
 

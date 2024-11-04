@@ -1,3 +1,5 @@
+package model;
+
 public class Movie {
     private String title;
     private String director;
@@ -63,7 +65,7 @@ public class Movie {
     @Override
     public String toString() {
 
-        return "Title:" + title + "\nDirector: " + director + "\nYear: " + yearCreated + "\nMovie in colour: " + isInColor + "\nMovie length: " + lengthInMinutes + " minutes" + "\nGenre: " + genre;
+        return "Title:" + title + "\nDirector: " + director + "\nYear: " + yearCreated + "\nmodel.Movie in colour: " + isInColor + "\nmodel.Movie length: " + lengthInMinutes + " minutes" + "\nGenre: " + genre;
     }
 
 }

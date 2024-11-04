@@ -1,9 +1,10 @@
+package UI;
+
+import datasource.Filehandler;
+import model.Controller;
 
 import java.io.FileNotFoundException;
 import java.util.Scanner;
-import java.util.logging.FileHandler;
-
-//// !!!! Få styr på adgang til filhåndtering mappen (load og save) !!!!
 
 
 public class UI {
@@ -17,7 +18,7 @@ public class UI {
     }
 
     public void displayMenu() {
-        System.out.println("\n--- Movie Collection Menu ---");
+        System.out.println("\n--- model.Movie Collection Menu ---");
         System.out.println("1. Type 'add' to add a movie to your collection");
         System.out.println("2. Type 'movies' to show your movie collection");
         System.out.println("3. Type 'search' to search for a specific movie");
@@ -35,7 +36,7 @@ public class UI {
             String choice = scanner.nextLine().trim().toLowerCase();
 
             switch (choice) {
-                case "add", "1" -> controller.getMovieCollection().addMovie();
+                case "add", "1" -> Filehandler.addMovie();
                 case "movies", "2" -> controller.getMovieCollection().displayMovies();
                 case "search", "3" -> controller.getMovieCollection().searchMovie();
                 case "edit", "4" -> controller.getMovieCollection().editMovie();
