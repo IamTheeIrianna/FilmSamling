@@ -2,7 +2,9 @@ package UI;
 
 import model.Controller;
 import model.Movie;
+import model.MovieCollection;
 
+import javax.naming.ldap.Control;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -25,7 +27,8 @@ public class UI {
         System.out.println("4. Type 'edit' to edit a movie in your collection");
         System.out.println("5. Type 'load' to load movies from a file");
         System.out.println("6. Type 'save' to save movies to a file");
-        System.out.println("7. Type 'exit' to exit program");
+        System.out.println("7. Type 'delete' to delete a movie from your collection");
+        System.out.println("8. Type 'exit' to exit program");
     }
 
     public void startProgram() {
@@ -57,7 +60,8 @@ public class UI {
                         }
                         System.out.println("Movie saved to text file");
                     }
-                    case "exit", "7" -> {
+                    case "delete", "7" -> deleteMovie();
+                    case "exit", "8" -> {
                         System.out.println("Exiting program. Goodbye!");
                         running = false;
                     }
@@ -70,24 +74,13 @@ public class UI {
             scanner.close();
         }
     }
+    private void deleteMovie() {
+        System.out.print("Enter the title of the movie to delete: ");
+        String title = scanner.nextLine().trim();
+        controller.getMovieCollection().deleteMovie(title);
+        System.out.println("Movie deleted successfully.");
+    }
 
-//    private void loadMovies() {
-//        try {
-//            controller.loadMovies();
-//            System.out.println("Movies loaded successfully.");
-//        } catch (IOException e) {
-//            System.out.println("Error loading movies: " + e.getMessage());
-//        }
-//    }
-//
-//    private void saveMovies() {
-//        try {
-//            controller.saveMovies();
-//            System.out.println("Movies saved successfully.");
-//        } catch (IOException e) {
-//            System.out.println("Error saving movies: " + e.getMessage());
-//        }
-//    }
 
     private void addMovie() {
         System.out.println("Enter movie title:");
