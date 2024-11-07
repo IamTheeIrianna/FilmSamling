@@ -10,14 +10,11 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.stream.Stream;
 
-
 public class Filehandler {
         private final String filePath = "FilmSamling.txt";
-
+        ArrayList<Movie> movies = new ArrayList<>();
 
         public ArrayList<Movie> loadMovies() {
-            ArrayList<Movie> movies = new ArrayList<>();
-
             try (Stream<String> lines = Files.lines(Paths.get(filePath))) {
                 lines.forEach(line -> {
                     String[] data = line.split(",");
@@ -50,7 +47,6 @@ public class Filehandler {
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
                 return false;
-
             }
         }
     }
