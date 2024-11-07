@@ -114,9 +114,20 @@ public class UI {
         return input;
     }
 
-    private void showMovies() {
-        String moviesDisplay = controller.getMovieCollection().displayMovies();
-        System.out.println("Movies in collection:\n" + moviesDisplay);
+  private void showMovies() {
+        ArrayList<Movie> movies = controller.getMovieCollection().getMovies();
+
+        // Sorter filmene alfabetisk efter titel
+        movies.sort(Comparator.comparing(Movie::getTitle));
+
+        if (movies.isEmpty()) {
+            System.out.println("No movies on the list.");
+        } else {
+            System.out.println("Movies in collection:");
+            for (Movie movie : movies) {
+                System.out.println(movie);
+            }
+        }
     }
 
     private void searchMovie() {
@@ -311,21 +322,7 @@ public class UI {
         return input;
     }
 
-    private void showMovies() {
-        ArrayList<Movie> movies = controller.getMovieCollection().getMovies();
-
-        // Sorter filmene alfabetisk efter titel
-        movies.sort(Comparator.comparing(Movie::getTitle));
-
-        if (movies.isEmpty()) {
-            System.out.println("No movies on the list.");
-        } else {
-            System.out.println("Movies in collection:");
-            for (Movie movie : movies) {
-                System.out.println(movie);
-            }
-        }
-    }
+  
 
     private void searchMovie() {
         System.out.print("Enter movie title to search: ");
