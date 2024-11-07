@@ -122,7 +122,6 @@ public class UI {
         }
     }
 
-
     private void searchMovie() {
         System.out.print("Enter movie title to search: ");
         String title = scanner.nextLine().trim();
@@ -190,8 +189,7 @@ public class UI {
     private void sortMovies(){
         System.out.println("Please select the sorting method: ");
         System.out.println("1. Sort by title (A-Z)");
-        System.out.println("2. Sort by genre");
-        System.out.println("3. Sort by release year");
+        System.out.println("2. Sort by release year");
 
         String choice = this.scanner.nextLine().trim();
         ArrayList<Movie> movies = controller.getMovieCollection().getMovies();
@@ -201,11 +199,7 @@ public class UI {
                 movies.sort(Comparator.comparing(Movie::getTitle));
                 break;
 
-            case "2", "Genre":
-                movies.sort(Comparator.comparing(Movie::getGenre));
-                break;
-
-            case "3", "Release year":
+            case "2", "Release year":
                 movies.sort(Comparator.comparing(Movie::getYearCreated));
                 break;
         }
