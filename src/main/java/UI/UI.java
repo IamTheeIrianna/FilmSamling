@@ -186,4 +186,29 @@ public class UI {
         controller.getMovieCollection().editMovie(movieToEdit, newTitle, newDirector, newYear, newInColor, newLength, newGenre);
         System.out.println("Movie details updated: " + movieToEdit);
     }
+    private void sortMovies(){
+        System.out.println("Please select the sorting method: ");
+        System.out.println("1. Sort by title (A-Z)");
+        System.out.println("2. Sort by genre");
+        System.out.println("3. Sort by release year");
+
+        String choice = this.scanner.nextLine().trim();
+        ArrayList<Movie> movies = controller.getMovieCollection().getMovies();
+
+        switch (choice) {
+            case "1", "Title":
+                movies.sort(Comparator.comparing(Movie::getTitle));
+                break;
+
+            case "2", "Genre":
+                movies.sort(Comparator.comparing(Movie::getGenre));
+                break;
+
+            case "3", "Release year":
+                movies.sort(Comparator.comparing(Movie::getYearCreated));
+                break;
+        }
+
+    }
+
 }
