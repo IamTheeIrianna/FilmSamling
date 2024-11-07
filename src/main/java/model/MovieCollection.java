@@ -8,11 +8,10 @@ import java.util.Scanner;
 
 public class MovieCollection {
     private ArrayList<Movie> movies;
-    private Scanner scanner;
+
 
     public MovieCollection(ArrayList<Movie> movieCollectionList) {
         this.movies = movieCollectionList;
-        this.scanner = new Scanner(System.in);
     }
 
     // Display all movies in the collection
@@ -42,23 +41,6 @@ public ArrayList<Movie> searchMovie(String title) {
     }
     return matchingMovies;
 }
- /*
-    //--------------------------- SearchMovies----------------
-    public void searchMovie(String title) {
-    // Search for movies by title
-    public ArrayList<Movie> searchMovie(String title) {
-        ArrayList<Movie> matchingMovies = new ArrayList<>();
-        try {
-            for (Movie movie : movies) {
-                if (movie.getTitle().equalsIgnoreCase(title)) {
-                    matchingMovies.add(movie);
-                }
-            }
-        }catch (Exception e) {
-            e.getMessage();
-        }
-
-    }*/
 
     // Edit a movie's details by title
     public void editMovie(Movie movie, String newTitle, String newDirector, Integer newYear, Boolean newInColor, Integer newLength, String newGenre) {
@@ -101,31 +83,6 @@ public ArrayList<Movie> searchMovie(String title) {
             }
         }
         return null;
-    }
-
-    // throws FileNotFoundException to indicate that the file was not found
-    public void loadMovies() throws FileNotFoundException {
-        File namesFile = new File("FilmSamling.txt");
-        Scanner scan = new Scanner(namesFile);
-
-        while (scan.hasNextLine()) {
-            String line = scan.nextLine();
-            String[] data = line.split(",");
-
-            if (data.length == 6) {
-                String title = data[0];
-                String director = data[1];
-                int year = Integer.parseInt(data[2]);
-                boolean isInColor = Boolean.parseBoolean(data[3]);
-                int length = Integer.parseInt(data[4]);
-                String genre = data[5];
-
-                Movie movie = new Movie(title, director, year, isInColor, length, genre);
-                movies.add(movie);
-            }
-        }
-        scan.close();
-        System.out.println("Film indlæst til samlingen.");
     }
 
 }

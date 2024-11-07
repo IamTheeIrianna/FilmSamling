@@ -8,7 +8,6 @@ import java.io.PrintStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.stream.Stream;
 
 
@@ -41,9 +40,7 @@ public class Filehandler {
             return movies;
         }
 
-        public boolean saveMovie(ArrayList<Movie> movies) throws FileNotFoundException {
-
-
+        public boolean saveMovie() throws FileNotFoundException {
             try (PrintStream output = new PrintStream(new File(filePath))) {
 
                 for (Movie m : movies) {
