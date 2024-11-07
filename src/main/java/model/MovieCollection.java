@@ -1,10 +1,6 @@
 package model;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintStream;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class MovieCollection {
     private ArrayList<Movie> movies;
@@ -13,7 +9,12 @@ public class MovieCollection {
     public MovieCollection(ArrayList<Movie> movieCollectionList) {
         this.movies = movieCollectionList;
     }
-
+    public ArrayList<Movie> getMovies() {
+        return movies; // Assuming 'movies' is the list of movies in MovieCollection
+    }
+    public void setMovies(ArrayList<Movie> movies) {
+        this.movies = movies;
+    }
     // Display all movies in the collection
     public String displayMovies() {
         if (movies.isEmpty()) {
@@ -84,5 +85,6 @@ public ArrayList<Movie> searchMovie(String title) {
         }
         return null;
     }
+
 
 }
