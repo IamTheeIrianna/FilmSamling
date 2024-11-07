@@ -16,127 +16,85 @@ public class MovieCollection {
     }
 
     // Display all movies in the collection
-   public String displayMovies() {
-       if (movies.isEmpty()) {
-           return "No movies on the list.";
-       }
-       StringBuilder movieList = new StringBuilder();
-       for (Movie movie : movies) {
-           movieList.append(movie.toString()).append("\n\n");
-       }
-       return movieList.toString();
-   }
+    public String displayMovies() {
+        if (movies.isEmpty()) {
+            return "No movies on the list.";
+        }
+        StringBuilder movieList = new StringBuilder();
+        for (Movie movie : movies) {
+            movieList.append(movie.toString()).append("\n\n");
+        }
+        return movieList.toString();
+    }
 
     public void addMovie(Movie newMovie) {
         movies.add(newMovie);
     }
 
-    // Search for movies by title
-    public void searchMovie() {
-        System.out.print("Enter movie title to search: ");
-        String title = scanner.nextLine().trim();
-        ArrayList<Movie> matchingMovies = new ArrayList<>();
-
-        for (Movie movie : movies) {
-            if (movie.getTitle().equalsIgnoreCase(title)) {
-                matchingMovies.add(movie);
-            }
-        }
-
-        if (matchingMovies.isEmpty()) {
-            System.out.println("No movies found with that title.");
-        } else {
-            System.out.println("Movies found:");
-            for (Movie movie : matchingMovies) {
-                System.out.println(movie);
-            }
+    //Search for movies by title
+//Search for movies by title
+public ArrayList<Movie> searchMovie(String title) {
+    ArrayList<Movie> matchingMovies = new ArrayList<>();
+    for (Movie movie : movies) {
+        if (movie.getTitle().equalsIgnoreCase(title)) {
+            matchingMovies.add(movie);
         }
     }
-
+    return matchingMovies;
+}
+ /*
+    //--------------------------- SearchMovies----------------
+    public void searchMovie(String title) {
+    // Search for movies by title
     public ArrayList<Movie> searchMovie(String title) {
         ArrayList<Movie> matchingMovies = new ArrayList<>();
-
-        for (Movie movie : movies) {
-            if (movie.getTitle().equalsIgnoreCase(title)) {
-                matchingMovies.add(movie);
+        try {
+            for (Movie movie : movies) {
+                if (movie.getTitle().equalsIgnoreCase(title)) {
+                    matchingMovies.add(movie);
+                }
             }
+        }catch (Exception e) {
+            e.getMessage();
         }
 
-        return matchingMovies;
-    }
-
+    }*/
 
     // Edit a movie's details by title
-    public void editMovie() {
-        displayMovies(); // lav evt. en metode som kun viser film titler som kan ændres
-        System.out.print("Enter the title of the movie to edit: ");
-        String title = scanner.nextLine().trim();
-        Movie movieToEdit = getMovieByTitle(title);
+    public void editMovie(Movie movie, String newTitle, String newDirector, Integer newYear, Boolean newInColor, Integer newLength, String newGenre) {
 
-        if (movieToEdit == null) {
-            System.out.println("model.Movie not found.");
-            return;
-        }
-        //----------------------------------------------------------
-        /*System.out.println("Would you like to delete or edit this movie? (delete/edit)");
-            String action = scanner.nextLine().trim();
-            if (action.equalsIgnoreCase("delete")) {
-        deleteMovie(title);
-    } else if (action.equalsIgnoreCase("edit")) {
-       public void deleteMovie(String title) {
-    Movie movieToDelete = getMovieByTitle(title);
+        if (newTitle != null)
+            movie.setTitle(newTitle);
 
-    if (movieToDelete == null) {
-        System.out.println("Movie not found.");
-        return;
+        if (newDirector != null)
+            movie.setDirector(newDirector);
+
+        if (newYear != null)
+            movie.setYearCreated(newYear);
+
+        if (newInColor != null)
+            movie.setInColor(newInColor);
+
+        if (newLength != null)
+            movie.setLengthInMinutes(newLength);
+
+        if (newGenre != null && !newGenre.isEmpty())
+            movie.setGenre(newGenre);
     }
 
-    movies.remove(movieToDelete);
-    System.out.println("Movie deleted successfully.");
-}
-        */
-//------------------------------------------------------
-        System.out.print("Enter new title (press Enter to keep current): ");
-        String newTitle = scanner.nextLine().trim();
-        if (!newTitle.isEmpty()) movieToEdit.setTitle(newTitle);
-
-        System.out.print("Enter new director (press Enter to keep current): ");
-        String newDirector = scanner.nextLine().trim();
-        if (!newDirector.isEmpty()) movieToEdit.setDirector(newDirector);
-
-        System.out.print("Enter new year (press Enter to keep current): ");
-        String yearInput = scanner.nextLine().trim();
-        if (!yearInput.isEmpty()) {
-            try {
-                movieToEdit.setYearCreated(Integer.parseInt(yearInput));
-            } catch (NumberFormatException e) {
-                System.out.println("Invalid year format.");
-            }
+    // Metode til at slette en film fra samlingen
+    public void deleteMovie(String title) {
+        Movie movieToDelete = getMovieByTitle(title);
+        if (movieToDelete == null) {
+            return;
         }
 
-        System.out.print("Is the movie in color? (y/n, Enter to keep current): ");
-        String colorInput = scanner.nextLine().trim();
-        if (!colorInput.isEmpty()) movieToEdit.setInColor(colorInput.equalsIgnoreCase("y"));
-
-        System.out.print("Enter new length in minutes (press Enter to keep current): ");
-        String lengthInput = scanner.nextLine().trim();
-        if (!lengthInput.isEmpty()) {
-            try {
-                movieToEdit.setLengthInMinutes(Integer.parseInt(lengthInput));
-            } catch (NumberFormatException e) {
-                System.out.println("Invalid length format.");
-            }
-        }
-
-        System.out.print("Enter new genre (press Enter to keep current): ");
-        String newGenre = scanner.nextLine().trim();
-        if (!newGenre.isEmpty()) movieToEdit.setGenre(newGenre);
-
-        System.out.println("Movie details updated: " + movieToEdit);
+        // Sletter filmen
+        movies.remove(movieToDelete);
     }
 
     // Helper method to find a movie by title
-    private Movie getMovieByTitle(String title) {
+    public Movie getMovieByTitle(String title) {
         for (Movie movie : movies) {
             if (movie.getTitle().equalsIgnoreCase(title)) {
                 return movie;
@@ -147,7 +105,6 @@ public class MovieCollection {
 
     // throws FileNotFoundException to indicate that the file was not found
     public void loadMovies() throws FileNotFoundException {
-
         File namesFile = new File("FilmSamling.txt");
         Scanner scan = new Scanner(namesFile);
 
@@ -156,7 +113,6 @@ public class MovieCollection {
             String[] data = line.split(",");
 
             if (data.length == 6) {
-
                 String title = data[0];
                 String director = data[1];
                 int year = Integer.parseInt(data[2]);
@@ -172,8 +128,7 @@ public class MovieCollection {
         System.out.println("Film indlæst til samlingen.");
     }
 
-    public void saveMovie() throws FileNotFoundException {
-
+    public void saveMovies() throws FileNotFoundException {
         File nameFile = new File("FilmSamling.txt");
         PrintStream output = new PrintStream(nameFile);
 
@@ -181,9 +136,5 @@ public class MovieCollection {
             output.println(m.getTitle() + "," + m.getDirector() + "," + m.getYearCreated() + "," + m.getIsInColor() + "," + m.getLengthInMinutes() + "," + m.getGenre());
         }
         output.close();
-
     }
-
-
-
 }

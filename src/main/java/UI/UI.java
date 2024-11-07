@@ -3,18 +3,20 @@ package UI;
 import model.Controller;
 import model.Movie;
 
-import java.io.FileNotFoundException;
-import java.util.Scanner;
 
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.ArrayList;
 
 public class UI {
     private Controller controller;
     private Scanner scanner;
 
-
     public UI() {
         this.controller = new Controller();
         this.scanner = new Scanner(System.in);
+
     }
 
     public void displayMenu() {
@@ -36,40 +38,159 @@ public class UI {
             String choice = scanner.nextLine().trim().toLowerCase();
 
             switch (choice) {
-                case "add", "1" -> {
-                    System.out.println("Enter movie title:");
-                    String title = scanner.nextLine().trim();
+                case "add", "1" -> addMovie();
+                case "movies", "2" -> showMovies();
+                case "search", "3" -> searchMovie();
+                case "edit", "4" -> manageMovie();
+                case "load", "5" -> loadMovies();
+                case "save", "6" -> saveMovies();
+                case "exit", "7" -> {
+                    System.out.println("Exiting program. Goodbye!");
+                    running = false;
+                }
+                default -> System.out.println("Invalid choice, please try again.");
+            }
+            if (running) displayMenu();
+        }
+    }
 
-                    System.out.println("Enter director:");
-                    String director = scanner.nextLine().trim();
+    private void addMovie() {
+        System.out.println("Enter movie title:");
+        String title = scanner.nextLine().trim();
 
-                    System.out.println("Enter year created:");
-                    int year = scanner.nextInt();
-                    scanner.nextLine();  // Consume newline
+        System.out.println("Enter director:");
+        String director = scanner.nextLine().trim();
 
-                    System.out.println("Is the movie in color? (y/n)");
-                    boolean isInColor = scanner.nextLine().trim().equalsIgnoreCase("y");
+        System.out.println("Enter year created:");
+        int year = scanner.nextInt();
+        scanner.nextLine();  // Consume newline
 
-                    System.out.println("Enter movie length in minutes:");
-                    int length = scanner.nextInt();
-                    scanner.nextLine();  // Consume newline
+        System.out.println("Is the movie in color? (y/n)");
+        boolean isInColor = scanner.nextLine().trim().equalsIgnoreCase("y");
 
-                    System.out.println("Enter genre:");
-                    String genre = scanner.nextLine().trim();
+        System.out.println("Enter movie length in minutes:");
+        int length = scanner.nextInt();
+        scanner.nextLine();  // Consume newline
 
+        System.out.println("Enter genre:");
+        String genre = scanner.nextLine().trim();
+
+        Movie newMovie = new Movie(title, director, year, isInColor, length, genre);
+        controller.getMovieCollection().addMovie(newMovie);
+        System.out.println("Movie added successfully!");
+    }
                     Movie newMovie = new Movie(title, director, year, isInColor, length, genre);
 
                     controller.getMovieCollection().addMovie(newMovie);
                     System.out.println("Movie added successfully!");
-                }
 
+    private void showMovies() {
+        String moviesDisplay = controller.getMovieCollection().displayMovies();
+        System.out.println("Movies in collection:\n" + moviesDisplay);
+    }
+
+    private void searchMovie() {
+        System.out.print("Enter movie title to search: ");
+        String title = scanner.nextLine().trim();
+        ArrayList<Movie> matchingMovies = controller.getMovieCollection().searchMovie(title);
+
+        if (matchingMovies.isEmpty()) {
+            System.out.println("No movies found with that title.");
+        } else {
+            System.out.println("Movies found:");
+            for (Movie movie : matchingMovies) {
+                System.out.println(movie);
+            }
+        }
+    }
+
+    private void manageMovie() {
+        System.out.print("Enter the title of the movie to manage (delete/edit): ");
+        String title = scanner.nextLine().trim();
+        Movie movieToManage = controller.getMovieCollection().getMovieByTitle(title);
+
+        if (movieToManage == null) {
+            System.out.println("Movie not found.");
+            return;
+        }
+
+        System.out.println("Would you like to delete or edit this movie? (delete/edit)");
+        String action = scanner.nextLine().trim();
+
+        if (action.equalsIgnoreCase("delete")) {
+            controller.getMovieCollection().deleteMovie(title);
+            System.out.println("Movie deleted successfully.");
+        } else if (action.equalsIgnoreCase("edit")) {
+            editMovie(movieToManage);
+        } else {
+            System.out.println("Invalid action. Please enter either 'delete' or 'edit'.");
+        }
+    }
+
+    private void editMovie(Movie movieToEdit) {
+        System.out.print("Enter new title (press Enter to keep current): ");
+        String newTitle = scanner.nextLine().trim();
+
+        System.out.print("Enter new director (press Enter to keep current): ");
+        String newDirector = scanner.nextLine().trim();
+
+        System.out.print("Enter new year (press Enter to keep current): ");
+        String yearInput = scanner.nextLine().trim();
+        Integer newYear = yearInput.isEmpty() ? null : Integer.parseInt(yearInput);
+
+        System.out.print("Is the movie in color? (y/n, Enter to keep current): ");
+        String colorInput = scanner.nextLine().trim();
+        Boolean newInColor = colorInput.isEmpty() ? null : colorInput.equalsIgnoreCase("y");
+
+        System.out.print("Enter new length in minutes (press Enter to keep current): ");
+        String lengthInput = scanner.nextLine().trim();
+        Integer newLength = lengthInput.isEmpty() ? null : Integer.parseInt(lengthInput);
+
+        System.out.print("Enter new genre (press Enter to keep current): ");
+        String newGenre = scanner.nextLine().trim();
+
+        controller.getMovieCollection().editMovie(movieToEdit, newTitle, newDirector, newYear, newInColor, newLength, newGenre);
+        System.out.println("Movie details updated: " + movieToEdit);
+    }
+
+    private void loadMovies() {
+        try {
+            controller.getMovieCollection().loadMovies();
+            System.out.println("Movies loaded successfully.");
+        } catch (FileNotFoundException e) {
+            System.out.println("Error: File not found.");
+        }
+    }
+
+    private void saveMovies() {
+        try {
+            controller.getMovieCollection().saveMovies();
+            System.out.println("Movies saved to file successfully.");
+        } catch (FileNotFoundException e) {
+            System.out.println("Error: Unable to save movies.");
+                }
 
                 case "movies", "2" -> {
                     System.out.println("Movies in collection: ");
                     String moviesDisplay = controller.getMovieCollection().displayMovies();
                     System.out.println(moviesDisplay);
                 }
-                case "search", "3" -> controller.getMovieCollection().searchMovie();
+                case "search", "3" -> {
+
+                    System.out.print("Enter movie title to search: ");
+                    String title = scanner.nextLine().trim();
+                    ArrayList<Movie> matchingMovies = controller.getMovieCollection().searchMovie(title);
+
+                    if (matchingMovies.isEmpty()) {
+                        System.out.println("No movies found with that title.");
+                    } else {
+                        System.out.println("Movies found:");
+                        for (Movie movie : matchingMovies) {
+                            System.out.println(movie);
+                        }
+                    }
+                }
+
                 case "edit", "4" -> controller.getMovieCollection().editMovie();
                 case "load", "5" -> {
                     try {
