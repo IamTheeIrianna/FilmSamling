@@ -207,7 +207,7 @@ private void sortMovies() {
 
     switch (choice) {
         case "1", "Title":
-            movies.sort(Comparator.comparing(Movie::getTitle));
+            movies.sort(Comparator.comparing(Movie::getTitle).thenComparing(Movie::getYearCreated));
             break;
 
         case "2", "Release year":
