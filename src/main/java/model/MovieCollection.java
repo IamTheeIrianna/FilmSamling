@@ -85,4 +85,8 @@ public ArrayList<Movie> searchMovie(String title) {
         return null;
     }
 
+    public ArrayList<Movie> getMovies() {
+        return movies;
+    }
+
 }
