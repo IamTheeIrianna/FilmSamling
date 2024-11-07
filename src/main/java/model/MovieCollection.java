@@ -128,13 +128,4 @@ public ArrayList<Movie> searchMovie(String title) {
         System.out.println("Film indlæst til samlingen.");
     }
 
-    public void saveMovies() throws FileNotFoundException {
-        File nameFile = new File("FilmSamling.txt");
-        PrintStream output = new PrintStream(nameFile);
-
-        for (Movie m : movies) {
-            output.println(m.getTitle() + "," + m.getDirector() + "," + m.getYearCreated() + "," + m.getIsInColor() + "," + m.getLengthInMinutes() + "," + m.getGenre());
-        }
-        output.close();
-    }
 }
