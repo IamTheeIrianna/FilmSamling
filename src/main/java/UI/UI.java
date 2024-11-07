@@ -123,7 +123,7 @@ public class UI {
         if (movies.isEmpty()) {
             System.out.println("No movies on the list.");
         } else {
-            sortmovie();
+            sortMovies();
             System.out.println("Movies in collection:");
             for (Movie movie : movies) {
                 System.out.println(movie);
