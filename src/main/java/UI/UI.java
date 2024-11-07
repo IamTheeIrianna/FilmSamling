@@ -186,6 +186,7 @@ public class UI {
         controller.getMovieCollection().editMovie(movieToEdit, newTitle, newDirector, newYear, newInColor, newLength, newGenre);
         System.out.println("Movie details updated: " + movieToEdit);
     }
+
     private void sortMovies(){
         System.out.println("Please select the sorting method: ");
         System.out.println("1. Sort by title (A-Z)");
