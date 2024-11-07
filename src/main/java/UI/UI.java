@@ -5,6 +5,7 @@ import model.Controller;
 import model.Movie;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Scanner;
 
 public class UI {
