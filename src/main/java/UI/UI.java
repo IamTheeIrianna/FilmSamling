@@ -126,6 +126,7 @@ public class UI {
             sortMovies();
             System.out.println("Movies in collection:");
             for (Movie movie : movies) {
+                System.out.println();//luft mellem filmene
                 System.out.println(movie);
             }
         }

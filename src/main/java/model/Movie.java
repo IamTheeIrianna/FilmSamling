@@ -60,12 +60,11 @@ public class Movie {
         this.lengthInMinutes = lengthInMinutes;
     }
 
-
     //To print movie info
     @Override
     public String toString() {
 
-        return "Title:" + title + "\nDirector: " + director + "\nYear: " + yearCreated + "\nmodel.Movie in colour: " + isInColor + "\nmodel.Movie length: " + lengthInMinutes + " minutes" + "\nGenre: " + genre;
+        return "Title: " + title + "\nDirector: " + director + "\nYear: " + yearCreated + "\nmodel.Movie in colour: " + isInColor + "\nmodel.Movie length: " + lengthInMinutes + " minutes" + "\nGenre: " + genre;
     }
 
 }

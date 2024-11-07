@@ -1,3 +1,4 @@
 bjørne,dis,34,false,234,ge
 batman3,nolan,2013,false,120,action
 spiser,gre,23,false,23,gr
+spiderman,fer,23,false,345,g

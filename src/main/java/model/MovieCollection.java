@@ -1,10 +1,6 @@
 package model;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintStream;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class MovieCollection {
     private ArrayList<Movie> movies;
@@ -13,12 +9,15 @@ public class MovieCollection {
     public MovieCollection(ArrayList<Movie> movieCollectionList) {
         this.movies = movieCollectionList;
     }
+
     public ArrayList<Movie> getMovies() {
         return movies; // Assuming 'movies' is the list of movies in MovieCollection
     }
+
     public void setMovies(ArrayList<Movie> movies) {
         this.movies = movies;
     }
+
     // Display all movies in the collection
     public String displayMovies() {
         if (movies.isEmpty()) {
@@ -37,15 +36,15 @@ public class MovieCollection {
 
     //Search for movies by title
 //Search for movies by title
-public ArrayList<Movie> searchMovie(String title) {
-    ArrayList<Movie> matchingMovies = new ArrayList<>();
-    for (Movie movie : movies) {
-        if (movie.getTitle().equalsIgnoreCase(title)) {
-            matchingMovies.add(movie);
+    public ArrayList<Movie> searchMovie(String title) {
+        ArrayList<Movie> matchingMovies = new ArrayList<>();
+        for (Movie movie : movies) {
+            if (movie.getTitle().equalsIgnoreCase(title)) {
+                matchingMovies.add(movie);
+            }
         }
+        return matchingMovies;
     }
-    return matchingMovies;
-}
 
     // Edit a movie's details by title
     public void editMovie(Movie movie, String newTitle, String newDirector, Integer newYear, Boolean newInColor, Integer newLength, String newGenre) {
@@ -90,8 +89,5 @@ public ArrayList<Movie> searchMovie(String title) {
         return null;
     }
 
-    public ArrayList<Movie> getMovies() {
-        return movies;
-    }
 
 }
