@@ -17,7 +17,7 @@ public class Filehandler {
     ArrayList<Movie> movies = new ArrayList<>();
 
     public ArrayList<Movie> loadMovies() {
-        ArrayList<Movie> movies = new ArrayList<>();
+
         try {
             // Check if file exists before trying to read
             if (!Files.exists(Paths.get(filePath))) {
@@ -42,16 +42,16 @@ public class Filehandler {
                 });
             }
 
-            // Add this logging after movies are loaded
+
             System.out.println("Loaded " + movies.size() + " movies from the file.");
         } catch (IOException e) {
-            e.printStackTrace();  // Better to use logging here
+            e.printStackTrace();
         }
         return movies;
     }
 
 
-    public boolean saveMovie(ArrayList<Movie> movies) throws FileNotFoundException {
+    public boolean saveMovie(ArrayList<Movie> movies) {
         try (PrintStream output = new PrintStream(new File(filePath))) {
             System.out.println("Saving " + movies.size() + " movies to the file.");
             for (Movie m : movies) {

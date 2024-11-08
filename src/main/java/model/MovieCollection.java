@@ -18,24 +18,12 @@ public class MovieCollection {
         this.movies = movies;
     }
 
-    // Display all movies in the collection
-    public String displayMovies() {
-        if (movies.isEmpty()) {
-            return "No movies on the list.";
-        }
-        StringBuilder movieList = new StringBuilder();
-        for (Movie movie : movies) {
-            movieList.append(movie.toString()).append("\n\n");
-        }
-        return movieList.toString();
-    }
 
     public void addMovie(Movie newMovie) {
         movies.add(newMovie);
     }
 
-    //Search for movies by title
-//Search for movies by title
+    // Search for a movie by title
     public ArrayList<Movie> searchMovie(String title) {
         ArrayList<Movie> matchingMovies = new ArrayList<>();
         for (Movie movie : movies) {

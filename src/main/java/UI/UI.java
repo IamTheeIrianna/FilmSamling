@@ -3,6 +3,7 @@ package UI;
 
 import model.Controller;
 import model.Movie;
+
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -72,6 +73,7 @@ public class UI {
             scanner.close();
         }
     }
+
     private void deleteMovie() {
         System.out.print("Enter the title of the movie to delete: ");
         String title = scanner.nextLine().trim();
@@ -114,7 +116,7 @@ public class UI {
         return input;
     }
 
-  private void showMovies() {
+    private void showMovies() {
         ArrayList<Movie> movies = controller.getMovieCollection().getMovies();
 
         // Sorter filmene alfabetisk efter titel
@@ -133,16 +135,16 @@ public class UI {
     }
 
     private void searchMovie() {
-    System.out.print("Enter movie title to search: ");
-    String title = scanner.nextLine().trim();
-    ArrayList<Movie> matchingMovies = controller.getMovieCollection().searchMovie(title);
+        System.out.print("Enter movie title to search: ");
+        String title = scanner.nextLine().trim();
+        ArrayList<Movie> matchingMovies = controller.getMovieCollection().searchMovie(title);
 
-    if (matchingMovies.isEmpty()) {
-        System.out.println("No movies found with that title.");
-    } else {
-        System.out.println("Movies found:");
-        for (Movie movie : matchingMovies) {
-            System.out.println(movie);
+        if (matchingMovies.isEmpty()) {
+            System.out.println("No movies found with that title.");
+        } else {
+            System.out.println("Movies found:");
+            for (Movie movie : matchingMovies) {
+                System.out.println(movie);
             }
         }
     }
@@ -197,22 +199,22 @@ public class UI {
     }
 
     //------- sort movies switch case
-private void sortMovies() {
-    System.out.println("Please select the sorting method: ");
-    System.out.println("1. Sort by title (A-Z)");
-    System.out.println("2. Sort by release year");
+    private void sortMovies() {
+        System.out.println("Please select the sorting method: ");
+        System.out.println("1. Sort by title (A-Z)");
+        System.out.println("2. Sort by release year");
 
-    String choice = this.scanner.nextLine().trim();
-    ArrayList<Movie> movies = controller.getMovieCollection().getMovies();
+        String choice = this.scanner.nextLine().trim();
+        ArrayList<Movie> movies = controller.getMovieCollection().getMovies();
 
-    switch (choice) {
-        case "1", "Title":
-            movies.sort(Comparator.comparing(Movie::getTitle).thenComparing(Movie::getYearCreated));
-            break;
+        switch (choice) {
+            case "1", "Title":
+                movies.sort(Comparator.comparing(Movie::getTitle).thenComparing(Movie::getYearCreated));
+                break;
 
-        case "2", "Release year":
-            movies.sort(Comparator.comparing(Movie::getYearCreated));
-            break;
+            case "2", "Release year":
+                movies.sort(Comparator.comparing(Movie::getYearCreated));
+                break;
+        }
     }
-}
 }

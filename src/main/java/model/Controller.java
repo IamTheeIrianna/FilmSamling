@@ -2,6 +2,7 @@
 package model;
 
 import datasource.Filehandler;
+
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
@@ -31,13 +32,13 @@ public class Controller {
     }
 
     public void saveMovies() throws FileNotFoundException {
-        // Step 1: Load existing movies from the file
+        // Load existing movies from the file
         ArrayList<Movie> existingMovies = filehandler.loadMovies();  // Load existing movies
 
-        // Step 2: Get the current list of movies from the movie collection (including newly added ones)
+        // Get the current list of movies from the movie collection (including newly added ones)
         ArrayList<Movie> currentMovies = movieCollection.getMovies();  // Get current movie collection
 
-        // Step 3: Add new movies that are not already in the file
+        // Add new movies that are not already in the file
         for (Movie newMovie : currentMovies) {
             boolean exists = existingMovies.stream()
                     .anyMatch(movie -> movie.getTitle().equalsIgnoreCase(newMovie.getTitle()));  // Check if movie already exists
@@ -47,8 +48,8 @@ public class Controller {
             }
         }
 
-        // Step 4: Save the updated list of movies back to the file
-        filehandler.saveMovie(existingMovies);  // Save the updated list to the file
+        // Save the updated list of movies back to the file
+        filehandler.saveMovie(existingMovies);
 
         // Log the number of movies saved
         System.out.println("Saving " + existingMovies.size() + " movies to the file.");

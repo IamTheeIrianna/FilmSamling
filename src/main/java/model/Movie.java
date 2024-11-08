@@ -17,45 +17,57 @@ public class Movie {
         this.lengthInMinutes = lengthInMinutes;
         this.genre = genre;
     }
-//--------------------------
+
+    //--------------------------
     public int getYearCreated() {
         return yearCreated;
     }
-    public void setYearCreated(int yearCreated){
+
+    public void setYearCreated(int yearCreated) {
         this.yearCreated = yearCreated;
     }
-//--------------------------------------
+
+    //--------------------------------------
     public String getDirector() {
         return director;
     }
-    public void setDirector(String director){
+
+    public void setDirector(String director) {
         this.director = director;
     }
-//-----------------------------------------
+
+    //-----------------------------------------
     public String getGenre() {
         return genre;
     }
-    public void setGenre(String genre){
+
+    public void setGenre(String genre) {
         this.genre = genre;
     }
-//------------------------------------------
+
+    //------------------------------------------
     public boolean getIsInColor() {
         return isInColor;
     }
-    public void setInColor(boolean isInColor){
+
+    public void setInColor(boolean isInColor) {
         this.isInColor = isInColor;
     }
-//----------------------------------------------
+
+    //----------------------------------------------
     public String getTitle() {
         return title;
     }
-    public void setTitle(String title){
+
+    public void setTitle(String title) {
         this.title = title;
     }
-//-----------------------------------
+
+    //-----------------------------------
     public int getLengthInMinutes() {
         return lengthInMinutes;
     }
+
     public void setLengthInMinutes(int lengthInMinutes) {
         this.lengthInMinutes = lengthInMinutes;
     }
